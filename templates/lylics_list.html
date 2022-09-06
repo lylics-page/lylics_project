@@ -1,0 +1,314 @@
+    <!doctype html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                crossorigin="anonymous"></script>
+
+
+        <title>Lyrics for you</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
+        <style>
+            * {
+                font-family: 'Gowun Dodum', sans-serif;
+            }
+            body {
+                background-color: #282a3f;
+            }
+
+            .container-fluid {
+                margin: 0 20px 0 30px;
+            }
+
+            .navbar-nav {
+                display: flex;
+                flex-direction: row;
+                padding-left: 0;
+                list-style: none;
+                margin: 0 10px 0 20px;
+            }
+
+            .bg-light {
+                background-color: #282a3f!important;
+            }
+
+            .navbar-nav .nav-link {
+                margin-right: 20px;
+            }
+
+            a {
+                color: white;
+            }
+            .nav-item > a{
+                color: white;
+            }
+
+
+            .mytitle {
+                width: 100%;
+                height: 250px;
+
+                background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://c0.wallpaperflare.com/preview/776/812/924/blurred-background-close-up-electronics-equipment.jpg');
+                background-position: center;
+                background-size: cover;
+
+                color: white;
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .mytitle > button {
+                width: 200px;
+                height: 50px;
+
+                background-color: transparent;
+                color: white;
+
+                border-radius: 50px;
+                border: 1px solid white;
+
+                margin-top: 10px;
+            }
+
+            .mytitle > button:hover {
+                border: 2px solid white;
+            }
+
+            .mycomment {
+                color: gray;
+            }
+
+            .mycards {
+                margin: 20px auto 0px auto;
+                width: 95%;
+                max-width: 1200px;
+                font-size: 19px;
+
+            }
+
+
+            .explain{
+                position: absolute;
+                opacity: 0;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+                text-align: center;
+                padding: 20px;
+                width: 100%;
+                /*font-size: 2em;*/
+            }
+
+            .card > .explain:hover {
+                opacity: 1;
+                transition-duration: 2s;
+            }
+
+            .card-body {
+                display: flex;
+                flex-direction: row;
+                align-content: center;
+                justify-content: flex-end;
+            }
+
+            .mypost {
+                width: 95%;
+                max-width: 500px;
+                margin: 20px auto 0px auto;
+                padding: 20px;
+                box-shadow: 0px 0px 3px 0px gray;
+
+                display: none;
+            }
+
+            .mybtns {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+
+                margin-top: 20px;
+            }
+
+            .mybtns > button {
+                margin-right: 10px;
+            }
+
+
+
+
+
+        </style>
+        <script>
+            $(document).ready(function () {
+                listing();
+            });
+
+            function listing() {
+                $.ajax({
+                    type: 'GET',
+                    url: '/movie',
+                    data: {},
+                    success: function (response) {
+                        let rows = response['movies']
+                        for (let i = 0; i < rows.length; i++) {
+                            let comment = rows[i]['comment']
+                            let desc = rows[i]['desc']
+                            let image = rows[i]['image']
+                            let star = rows[i]['star']
+                            let title = rows[i]['title']
+
+                            let star_image = '⭐'.repeat(star)
+
+                            let temp_html = `<div class="col">
+                                                <div class="card h-100">
+                                                    <img src="${image}"
+                                                         class="card-img-top">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">${title}</h5>
+                                                        <p class="card-text">${desc}</p>
+                                                        <p>${star_image}</p>
+                                                        <p class="mycomment">${comment}</p>
+                                                    </div>
+                                                </div>
+                                            </div>`
+                            $('#cards-box').append(temp_html)
+                        }
+                    }
+                })
+            }
+
+            function posting() {
+                let url = $('#url').val()
+                let star = $('#star').val()
+                let comment = $('#comment').val()
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/movie',
+                    data: {url_give: url, star_give: star, comment_give: comment},
+                    success: function (response) {
+                        alert(response['msg'])
+                        window.location.reload()
+                    }
+                });
+            }
+
+            function open_box() {
+                $('#post-box').show()
+            }
+
+            function close_box() {
+                $('#post-box').hide()
+            }
+        </script>
+    </head>
+
+    <body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">LFY</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="d-flex" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">모아보기</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">등록하기</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+    </header>
+    <div class="mytitle">
+        <h1>Lylics for you</h1>
+        <h3>당신을 위한 가사들</h3>
+        <button onclick="open_box()">음악 찾기</button>
+    </div>
+    <div class="mypost" id="post-box">
+        <div class="form-floating mb-3">
+            <input id="url" type="email" class="form-control" placeholder="name@example.com">
+            <label>영화URL</label>
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">별점</label>
+            <select class="form-select" id="star">
+                <option selected>-- 선택하기 --</option>
+                <option value="1">⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="5">⭐⭐⭐⭐⭐</option>
+            </select>
+        </div>
+        <div class="form-floating">
+            <textarea id="comment" class="form-control" placeholder="Leave a comment here"></textarea>
+            <label for="floatingTextarea2">코멘트</label>
+        </div>
+        <div class="mybtns">
+            <button onclick="posting()" type="button" class="btn btn-dark">기록하기</button>
+            <button onclick="close_box()" type="button" class="btn btn-outline-dark">닫기</button>
+        </div>
+    </div>
+    <div class="mycards">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+              <div class="card">
+                    <p class="explain">내가 이렇게 사랑하는데 이렇게 원하는데<br>나는 아무것도 할 수 없고 바라만 보는데도<br>-10cm 스토커-</p>
+                  <img src="http://cdn.slist.kr/news/photo/202101/222327_375623_3145.jpg" class="card-img-top" alt="">
+                    <div class="card-body">
+                    <p class="card-text">❤</p>
+                    </div>
+                </div>
+              </div>
+            <div class="col">
+              <div class="card">
+                    <p class="explain">너도 언젠가 날 잊게 될까<br>지금 표정과 오늘의 향기도<br>단잠 사이에 스쳐간 봄날의 꿈처럼<br>-아이유 라일락-</p>
+                  <img src="https://img.vogue.co.kr/vogue/2021/12/style_61c299401f4b3-1200x801.jpeg" class="card-img-top" alt="">
+                    <div class="card-body">
+                    <p class="card-text">❤</p>
+                    </div>
+                </div>
+              </div>
+            <div class="col">
+              <div class="card">
+                    <p class="explain">안녕이란 말이 참 우습지<br>우릴 시작하게 한 인사가<br>이젠 우리의 끝을 알려주는<br>말이 되었어<br>-정승환 안녕이란 말-</p>
+                  <img src="https://blog.kakaocdn.net/dn/liLCr/btrB9tx0945/dLP2lokZZ1vOOc8ytaLPwK/img.jpg" class="card-img-top" alt="">
+                    <div class="card-body">
+                    <p class="card-text">❤</p>
+                    </div>
+                </div>
+              </div>
+            <div class="col">
+              <div class="card">
+                    <p class="explain">'Cause I know what you like boy<br>You're my chemical hype boy<br>-NewJeans Hype Boy-</p>
+                  <img src="https://img.hankyung.com/photo/202207/BF.30719582.1.jpg" class="card-img-top" alt="">
+                    <div class="card-body">
+                    <p class="card-text">❤</p>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </div>
+
+    </body>
+
+    </html>
