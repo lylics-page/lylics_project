@@ -12,23 +12,30 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
     <title>toyproject</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Dongle:wght@300&family=Gamja+Flower&family=Hahmlet:wght@300&family=Nanum+Brush+Script&family=Sunflower&display=swap" rel="stylesheet">
     <style>
+        * {
+            font-family: 'Gamja Flower', cursive;
+        }
+        .mybody {
+            background-color: #282a3f;
+        }
         .mytitle {
             height: 60px;
 
-            background-color: darkseagreen;
+            background-color: dimgray;
         }
         .mypost {
-            background-color: darkseagreen;
+            background-color: #bfc7e0;
 
-            height: 510px;
+            height: 480px;
 
             width: 95%;
             max-width: 800px;
             margin: 140px auto 20px auto;
 
             box-shadow: 0px 0px 3px 0px black;
-            padding: 80px;
+            padding: 70px;
         }
     </style>
     <script>
@@ -49,37 +56,45 @@
         }
     </script>
 </head>
-<body>
-<div class="mytitle">
-    <button style="margin-top: 10px; margin-left: 50px; width: 100px" type="button" class="btn btn-outline-dark">Home</button>
-    <button style="float: right; margin-top: 10px; margin-right: 50px" type="button" class="btn btn-outline-dark">등록하기</button>
-    <button style="float: right; margin-top: 10px; margin-right: 10px" type="button" class="btn btn-outline-dark">모아보기</button>
-</div>
-<div class="mypost">
-    <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="name" placeholder="url">
-        <label style="color: gray" for="floatingInput">Title</label>
+<body class="mybody">
+    <div class="mytitle">
+        <button style="margin-top: 10px; margin-left: 50px; width: 100px" type="button" class="btn btn-outline-dark">
+            <a href="/"><img src="my_lyrics_logo.png" alt="로고" width="20%" height="10%" /></a>
+        </button>
+        <button style="float: right; margin-top: 10px; margin-right: 50px" type="button" class="btn btn-outline-dark">
+            등록하기
+        </button>
+        <button style="float: right; margin-top: 10px; margin-right: 10px" type="button" class="btn btn-outline-dark">
+            모아보기
+        </button>
     </div>
-    <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="name" placeholder="url">
-        <label style="color: gray" for="floatingInput">Artist</label>
-    </div>
-    <div class="input-group mb-3">
-        <input type="file" class="form-control" id="inputGroupFile02">
-        <label class="input-group-text" for="inputGroupFile02">Image</label>
-    </div>
-    <div class="form-floating">
-        <textarea class="form-control" placeholder="Leave a comment here" id="comment"
-          style="height: 100px"></textarea>
-        <label style="color: gray" for="floatingTextarea2">Lyrics</label>
-    </div>
-    <div class="mypassword">
-        <div style="margin-top: 15px; width: 250px; float: right" class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="password" aria-label="Recipient's username"
-                   aria-describedby="button-addon2">
-            <button style="margin-left: 10px; background-color: ghostwhite; color: black; border-color: ghostwhite" type="button" class="btn btn-secondary btn-sm">등록하기</button>
+    <div class="mypost">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="name" placeholder="url">
+            <label style="color: gray" for="floatingInput">Title</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="name" placeholder="url">
+            <label style="color: gray" for="floatingInput">Artist</label>
+        </div>
+        <div class="input-group mb-3">
+            <input type="file" class="form-control" id="inputGroupFile02">
+            <label class="input-group-text" for="inputGroupFile02">Image</label>
+        </div>
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="comment"
+                      style="height: 100px"></textarea>
+            <label style="color: gray" for="floatingTextarea2">Lyrics</label>
+        </div>
+        <div class="mypassword">
+            <div style="margin-top: 15px; width: 250px; float: right" class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="password" aria-label="Recipient's username"
+                       aria-describedby="button-addon2">
+                <button style="margin-left: 10px; background-color: ghostwhite; color: black; border-color: ghostwhite"
+                        type="button" class="btn btn-secondary btn-sm">등록하기
+                </button>
+            </div>
         </div>
     </div>
-</div>
 </body>
 </html>
