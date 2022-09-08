@@ -1,10 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-</body>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>My Lyrics</title>
+    <link
+      href="https://cdn-icons-png.flaticon.com/512/4033/4033777.png"
+      rel="shortcut icon"
+      type="image/x-icon"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Gowun Dodum", sans-serif;
+      }
+      body {
+        background-color: #282a3f;
+      }
+
+      .mytitle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        margin-bottom: 20px;
+      }
+      .mybtn {
+        margin-top: 30px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+      .mybtn > button {
+        margin: 20px;
+      }
+
+      .btm_image {
+        background-color: transparent;
+        border: transparent;
+
+        width: 120px;
+      }
+      .btm_image :hover {
+        filter: brightness(80%);
+      }
+      .mycard {
+        width: 600px;
+        height: 450px;
+
+        background-color: black;
+        margin: 10px auto;
+
+        position: relative;
+      }
+
+      .mycard > img {
+        width: 100%;
+        height: 450px;
+        object-fit: contain;
+      }
+
+      .txt {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        background-color: rgba( 255, 255, 255, 0.2 );
+        text-align: center;
+
+        width: 80%;
+        height: 80%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        overflow: auto;
+        text-overflow: ellipsis;
+
+        color: white;
+
+        opacity: 0
+      }
+
+      .txt:hover {
+        opacity: 1;
+      }
+
+      .lyrics {
+        font-weight: bold;
+        font-size: large;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="mytitle">
+      <img src="../static/큰로고.png" alt="로고" width="100%" height="100%" />
+      <img
+        src="../static/로고텍스트.png"
+        alt="로고_렉스트"
+        width="25%"
+        height="25%"
+      />
+    </div>
+    <div class="mybtn">
+        <button type="button" class="btm_image">
+          <img src="../static/등록하기_버튼.png" width="100%" />
+        </button>
+        <button type="button" class="btm_image">
+          <img src="../static/모아보기_버튼.png" width="100%" />
+        </button>
+    </div>
+    <div class="mycard">
+      <div class="txt">
+        <p class="lyrics">
+          경고하는데 조심해야 돼 깊을지도 몰라
+          여럿 봤는데 못 나오던데 왜? 나도 몰라
+        </p>
+        <h5>Umpah umpah 레드벨벳</h5>
+      </div>
+      <img src="https://spnimage.edaily.co.kr/images/Photo/files/NP/S/2019/08/PS19081400051.jpg">
+    </div>
+
+  </body>
 </html>

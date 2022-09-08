@@ -5,13 +5,38 @@ import requests
 from bs4 import BeautifulSoup
 
 from pymongo import MongoClient
-client = MongoClient('mongodb+srv://test:sparta@cluster0.vytnnux.mongodb.net/Cluster0?retryWrites=true&w=majority')
+import certifi
+client = MongoClient('mongodb+srv://test:sparta@cluster0.atfonxh.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=certifi.where())
 db = client.dbsparta
 
-# HTML 화면 보여주기
+#HTML 화면 등록하기
 @app.route('/')
 def home():
-    return render_template('lylics_list.html')
+    return render_template('lyrics_create.html')
+
+@app.route("/toy_27", methods=["POST"])
+def homework_post():
+    title_receive = request.form['title_give']
+    artist_receive = request.form['artist_give']
+    image_receive = request.form['image_give']
+    lyrics_receive = request.form['lyrics_give']
+    password_receive = request.form['password_give']
+
+    doc = {
+        'title':title_receive,
+        'artist':artist_receive,
+        'image':image_receive,
+        'lyrics':lyrics_receive,
+        'password':password_receive
+    }
+    db.toy_27.insert_one(doc)
+
+    return jsonify({'msg':'등록 완료'})
+
+# HTML 화면 보여주기
+# @app.route('/')
+# def home():
+#     return render_template('lylics_list.html')
 
 # @app.route('/battle_create')
 # def battle_create():
