@@ -1,0 +1,345 @@
+    <!doctype html>
+    <html lang="en">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+              rel="stylesheet">
+
+        <title>Lyrics for you</title>
+
+        <style>
+            * {
+                font-family: 'Noto Sans KR', sans-serif;
+            }
+
+            body {
+                background-color: #282a3f;
+            }
+
+
+            /*네비게이션 바*/
+            .container-fluid {
+                margin: 0 20px 0 30px;
+            }
+
+            .navbar-nav {
+                display: flex;
+                flex-direction: row;
+                padding-left: 0;
+                list-style: none;
+                margin: 0 10px 0 20px;
+            }
+
+            .bg-light {
+                background-color: #282a3f !important;
+            }
+
+            .navbar-nav .nav-link {
+                margin-right: 20px;
+            }
+
+            .nav-item {
+                margin: auto;
+                width: 150px;
+                border-color: transparent;
+                color: white;
+            }
+
+            /*타이틀*/
+
+            .mytitle {
+                width: 100%;
+                height: 250px;
+
+                background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://c0.wallpaperflare.com/preview/776/812/924/blurred-background-close-up-electronics-equipment.jpg');
+                background-position: center;
+                background-size: cover;
+
+                color: white;
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .mytitle > h1 {
+                font-size: 5.5rem;
+                text-shadow: 4px 2px 2px #282a3f;
+            }
+            .mytitle > h3 {
+                text-shadow: 2px 1px 1px #282a3f;
+            }
+
+            .mytitle > button {
+                width: 200px;
+                height: 50px;
+
+                background-color: transparent;
+                color: white;
+
+                border-radius: 50px;
+                border: 1px solid white;
+
+                margin-top: 10px;
+            }
+
+            .mytitle > button:hover {
+                border: 2px solid white;
+            }
+
+            /*묶음*/
+            .create_box {
+                border: 3px solid white;
+                border-radius: 10px;
+                width: 750px;
+                height: 550px;
+                margin: 30px auto;
+            }
+
+
+            /*제목*/
+            .title {
+                text-align: center;
+                margin: auto;
+                margin-top: 50px;
+            }
+
+            /*가사*/
+            .main {
+                width: 650px;
+                margin: auto;
+                margin-top: 20px;
+            }
+
+            /*가수 제목*/
+            .opinion {
+                width: 650px;
+                margin: auto;
+                margin-top: 30px;
+                margin-bottom: 10px;
+            }
+
+            /*가수1*/
+            .op1-1-1 {
+                margin-right: 10px;
+            }
+
+            /*제목2*/
+            .op1-2 {
+                margin-left: 10px;
+            }
+
+            /*이미지추가*/
+            .plusimg {
+                width: 650px;
+                margin: auto;
+                margin-top: 30px;
+            }
+
+            /*인풋박스글자크기*/
+            input::placeholder {
+                font-size: 13px;
+            }
+
+            /*생성하기버튼*/
+            .btn {
+                width: 150px;
+                margin-top: 30px;
+                margin-right: 10px;
+                background: #735bc1;
+                border: 0px;
+                font-family: 'Jua', sans-serif;
+            }
+
+            .btn_align {
+                text-align: center;
+            }
+
+            .btn:hover {
+                background-color: #b7acdb;
+            }
+
+
+            .attach_box {
+                border-style: solid;
+                border-color: lightgray;
+                width: 700px;
+                padding-top: 10px;
+                padding-left: 14px;
+                padding-bottom: 10px;
+            }
+
+            .input-file-button {
+                padding: 6px 25px;
+                background-color: #F3D283;
+                border-radius: 4px;
+                border-color: black;
+                cursor: pointer;
+            }
+
+            .user_text {
+                color: red;
+            }
+
+            .main_image {
+                position: static;
+            }
+
+        </style>
+        <script>
+            function sub_create() {
+                let title = $('#title').val();
+                let artist = $('#artist').val();
+                let lyrics = $('#lyrics').val();
+                let pw = $('#password').val();
+                let img = $('#file_upload')[0].files[0];
+
+                let form_data = new FormData()
+                form_data.append("title_give", title)
+                form_data.append("artist_give", artist)
+                form_data.append("lyrics_give", lyrics)
+                form_data.append("pw_give", pw)
+                form_data.append("img_give", img)
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/sub_create',
+                    data: form_data,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        alert(response['msg']);
+                        window.location.href = "/lyrics_list";
+                    }
+                });
+            }
+            function go_back() {
+                history.back();
+            }
+        </script>
+    </head>
+
+
+    <body>
+
+    <!--여기서부터 네비게이션바-->
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/" onclick="rogo">
+                    <img src="../static/작은로고.png" alt="" width="30%" height="20%"/></a>
+                <div class="d-flex" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="navbar-brand" href="/lyrics_create" onclick="rogo">
+                                <img src="../static/등록하기.png" alt="" width="90px"/></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="navbar-brand" href="/lyrics_list" onclick="rogo">
+                                <img src="../static/모아보기.png" alt="" width="90px"/></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <!--타이틀-->
+    <div class="mytitle">
+        <h1>My Lyrics</h1>
+        <h3>당신을 위한 가사들</h3>
+    </div>
+
+    <div class="wrap">
+        <div class="create_box">
+            <!--만들기-->
+            <div class="title" style="color: white"><h1><b>🎵가사 등록하기🎵</b></h1></div>
+            <!--/*닉네임, 패스워드 입력*/-->
+            <div class="opinion">
+                <div class="op1 input-group mb-3">
+                    <div class="input-group-prepend op1-1">
+                        <span class="input-group-text"
+                              style="background: #735bc1; color: white">artist</span>
+                    </div>
+                    <input id="artist" type="text" class="form-control op1-1-1" aria-label="Default"
+                           aria-describedby="inputGroup-sizing-default"
+                           placeholder="artist를 입력하세요.">
+                    <div class="input-group-prepend op1-2">
+                        <span class="input-group-text"
+                              style="background: #735bc1; color: white">제목</span>
+                    </div>
+                    <input id="title" type="text" class="form-control" aria-label="Default"
+                           aria-describedby="inputGroup-sizing-default"
+                           placeholder="제목을 작성해주세요.">
+                </div>
+            </div>
+
+
+            <!--/*가사*/-->
+            <div class="main input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"
+                          style="background: #735bc1; color: white"">가사</span>
+                </div>
+                <input id="lyrics" type="text" class="form-control" aria-label="Default"
+                       aria-describedby="inputGroup-sizing-default"
+                       placeholder="가사를 입력하세요.">
+            </div>
+
+            <!--/*의견1,2*/-->
+            <div class="opinion">
+                <div class="op1 input-group mb-3">
+                    <div class="input-group-prepend op1">
+                        <span class="input-group-text"
+                              style="background: #735bc1; color: white"">패스워드</span>
+                    </div>
+                    <input id="password" type="text" class="form-control" aria-label="Default"
+                           aria-describedby="inputGroup-sizing-default"
+                           placeholder="패스워드를 입력하세요.">
+                </div>
+                <div style="text-align: center;"><small class="user_text">가사를 삭제하기 위해 사용되오니 패스워드를 기억하세요.</small>
+                </div>
+            </div>
+
+            <!--/*이미지넣기*/-->
+            <div class="plusimg input-group mb-3">
+                <div class="attach_box" style="color: white">
+                    <input type="file" name="file" id="file_upload"/>
+                    <br>
+                    <span>*파일이 첨부 되지 않을 경우, 랜덤 사진이 노출됩니다.*</span>
+                </div>
+            </div>
+
+            <!--닫기, 생성하기 버튼-->
+            <div class="btn_align">
+                <a href="#" button type="button" class="btn btn-secondary" onclick="sub_create()">생성하기</a>
+                <a href="#" button type="button" class="btn btn-secondary" onclick="go_back()">닫기</a>
+            </div>
+        </div>
+
+
+    </div>
+
+    </body>
+    </html>
