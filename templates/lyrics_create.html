@@ -23,7 +23,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
               rel="stylesheet">
 
-        <title>Lyrics for you</title>
+        <title>My Lyrics</title>
 
         <style>
             * {
@@ -37,7 +37,13 @@
 
             /*네비게이션 바*/
             .container-fluid {
-                margin: 0 20px 0 30px;
+
+            }
+            .navbar>.container-fluid {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: nowrap
             }
 
             .navbar-nav {
@@ -52,15 +58,13 @@
                 background-color: #282a3f !important;
             }
 
-            .navbar-nav .nav-link {
-                margin-right: 20px;
-            }
 
             .nav-item {
-                margin: auto;
-                width: 150px;
+                margin-right: 20px;
+                width: 90px;
                 border-color: transparent;
                 color: white;
+                align-items: center;
             }
 
             /*타이틀*/
@@ -108,11 +112,21 @@
 
             /*묶음*/
             .create_box {
+                display: flex;
                 border: 3px solid white;
                 border-radius: 10px;
-                width: 750px;
-                height: 550px;
+                max-width: 1200px;
+                width: 95%;
+                max-height: 900px;
+                height: 95%;
                 margin: 30px auto;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                align-content: center;
+                justify-content: center;
+                align-items: center;
+                padding-bottom: 30px;
+                word-break: keep-all;
             }
 
 
@@ -125,14 +139,14 @@
 
             /*가사*/
             .main {
-                width: 650px;
+                width: 60vw;
                 margin: auto;
                 margin-top: 20px;
             }
 
             /*가수 제목*/
             .opinion {
-                width: 650px;
+                width: 60vw;
                 margin: auto;
                 margin-top: 30px;
                 margin-bottom: 10px;
@@ -150,8 +164,8 @@
 
             /*이미지추가*/
             .plusimg {
-                width: 650px;
-                margin: auto;
+                width: 60vw;
+                margin: 0 auto;
                 margin-top: 30px;
             }
 
@@ -182,7 +196,7 @@
             .attach_box {
                 border-style: solid;
                 border-color: lightgray;
-                width: 700px;
+                width: 60vw;
                 padding-top: 10px;
                 padding-left: 14px;
                 padding-bottom: 10px;
@@ -247,7 +261,7 @@
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/" onclick="rogo">
-                    <img src="../static/작은로고.png" alt="" width="30%" height="20%"/></a>
+                    <img src="../static/작은로고.png" alt="" width="130px"/></a>
                 <div class="d-flex" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
@@ -312,7 +326,7 @@
                 <div class="op1 input-group mb-3">
                     <div class="input-group-prepend op1">
                         <span class="input-group-text"
-                              style="background: #735bc1; color: white"">패스워드</span>
+                              style="background: #735bc1; color: white">패스워드</span>
                     </div>
                     <input id="password" type="text" class="form-control" aria-label="Default"
                            aria-describedby="inputGroup-sizing-default"

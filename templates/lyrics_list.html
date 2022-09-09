@@ -17,7 +17,7 @@
         <script src="https://kit.fontawesome.com/0cb8f54fdc.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
 
-        <title>Lyrics for you</title>
+        <title>My Lyrics</title>
         <!--폰트-->
         <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 
@@ -30,8 +30,15 @@
                 background-color: #282a3f;
             }
 
+            /*네비게이션 바*/
             .container-fluid {
-                margin: 0 20px 0 30px;
+
+            }
+            .navbar>.container-fluid {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: nowrap
             }
 
             .navbar-nav {
@@ -43,18 +50,16 @@
             }
 
             .bg-light {
-                background-color: #282a3f!important;
+                background-color: #282a3f !important;
             }
 
-            .navbar-nav {
-                margin-right: 20px;
-            }
 
             .nav-item {
-                margin: auto;
-                width: 150px;
+                margin-right: 20px;
+                width: 90px;
                 border-color: transparent;
                 color: white;
+                align-items: center;
             }
 
             .mytitle {
@@ -283,7 +288,7 @@
         <nav class="navbar navbar-expand-lg bg-light">
           <div class="container-fluid">
             <a class="navbar-brand" href="/" onclick="rogo" >
-                <img src="../static/작은로고.png" alt="" width="30%" height="20%" /></a>
+                <img src="../static/작은로고.png" alt="" width="130px" /></a>
             <div class="d-flex" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item">
