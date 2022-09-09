@@ -45,8 +45,10 @@
         align-items: center;
         justify-content: center;
 
+
         margin-bottom: 20px;
       }
+
       .mybtn {
         margin-top: 30px;
 
@@ -69,8 +71,10 @@
         filter: brightness(80%);
       }
       .mycard {
-        width: 600px;
-        height: 450px;
+        width: 100%;
+        max-width: 600px;
+        height: 100%;
+        max-height: 450px;
 
         background-color: black;
         margin: 10px auto;
@@ -80,7 +84,10 @@
 
       .mycard > img {
         width: 100%;
-        height: 450px;
+        max-width: 600px;
+        height: 100%;
+        max-height: 450px;
+
         object-fit: contain;
       }
 
@@ -90,7 +97,6 @@
         left: 50%;
         transform: translate(-50%, -50%);
 
-        background-color: rgba( 255, 255, 255, 0.2 );
         text-align: center;
 
         width: 80%;
@@ -111,6 +117,8 @@
 
       .txt:hover {
         opacity: 1;
+        transition-duration: 1.5s;
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
       }
 
       .lyrics {
@@ -119,8 +127,41 @@
       }
 
     </style>
+       <script>
+        $(document).ready(function(){
+            cardbox();
+        });
+        function cardbox() {
+            $('#randombox').empty();
+
+            $.ajax({
+                type: "GET",
+                url: "/main/get",
+                data: {},
+                success: function (response) {
+                    let rows = response['gasa']
+                    let i = Math.floor(Math.random() * rows.length)
+                        let title = rows[i]['title']
+                        let artist = rows[i]['artist']
+                        let lyrics = rows[i]['lyrics']
+                        let img = rows[i]['img_src']
+
+                        let temp_html = `<div class="txt">
+                                          <p class="lyrics">
+                                            ${lyrics}
+                                          </p>
+                                          <h5>${title} ${artist}</h5>
+                                        </div>
+                                        <img src="../static/${img}">`
+                      $('#randombox').append(temp_html)
+
+                }
+            })
+        }
+       </script>
   </head>
   <body>
+
     <div class="mytitle">
       <img src="../static/큰로고.png" alt="로고" width="100%" height="100%" />
       <img
@@ -131,22 +172,24 @@
       />
     </div>
     <div class="mybtn">
-        <button type="button" class="btm_image">
-          <img src="../static/등록하기_버튼.png" width="100%" />
-        </button>
-        <button type="button" class="btm_image">
-          <img src="../static/모아보기_버튼.png" width="100%" />
-        </button>
+      <li class="nav-item">
+        <a class="btm_image" href="/lyrics_create" onclick="">
+          <img src="../static/등록하기_버튼.png" alt="" width="120px"/></a>
+      </li>
+      <li class="nav-item">
+        <a class="btm_image" href="/lyrics_list" onclick="">
+          <img src="../static/모아보기_버튼.png" alt="" width="120px"/></a>
+      </li>
     </div>
-    <div class="mycard">
-      <div class="txt">
-        <p class="lyrics">
-          경고하는데 조심해야 돼 깊을지도 몰라
-          여럿 봤는데 못 나오던데 왜? 나도 몰라
-        </p>
-        <h5>Umpah umpah 레드벨벳</h5>
-      </div>
-      <img src="https://spnimage.edaily.co.kr/images/Photo/files/NP/S/2019/08/PS19081400051.jpg">
+    <div class="mycard" id="randombox">
+<!--      <div class="txt">-->
+<!--        <p class="lyrics">-->
+<!--          경고하는데 조심해야 돼 깊을지도 몰라-->
+<!--          여럿 봤는데 못 나오던데 왜? 나도 몰라-->
+<!--        </p>-->
+<!--        <h5>Umpah umpah 레드벨벳</h5>-->
+<!--      </div>-->
+<!--      <img src="https://spnimage.edaily.co.kr/images/Photo/files/NP/S/2019/08/PS19081400051.jpg">-->
     </div>
 
   </body>
