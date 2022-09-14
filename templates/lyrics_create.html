@@ -20,15 +20,14 @@
                 integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
                 crossorigin="anonymous"></script>
 
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
-              rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 
         <title>My Lyrics</title>
 
 
         <style>
             * {
-                font-family: 'Noto Sans KR', sans-serif;
+                font-family: 'Gowun Dodum', sans-serif;
             }
 
             body {
@@ -87,7 +86,7 @@
             }
 
             .mytitle > h1 {
-                font-size: 5.5rem;
+                font-size: 5rem;
                 text-shadow: 4px 2px 2px #282a3f;
             }
             .mytitle > h3 {
@@ -136,31 +135,30 @@
                 text-align: center;
                 margin: auto;
                 margin-top: 50px;
+                margin-bottom: 50px;
             }
 
             /*가사*/
             .main {
                 width: 60vw;
                 margin: auto;
-                margin-top: 20px;
             }
 
             /*가수 제목*/
             .opinion {
                 width: 60vw;
                 margin: auto;
-                margin-top: 30px;
-                margin-bottom: 10px;
+
             }
 
             /*가수1*/
             .op1-1-1 {
-                margin-right: 10px;
+                /*margin-right: 10px;*/
             }
 
             /*제목2*/
             .op1-2 {
-                margin-left: 10px;
+                /*margin-left: 10px;*/
             }
 
             /*이미지추가*/
@@ -177,7 +175,7 @@
 
             /*생성하기버튼*/
             .btn {
-                width: 150px;
+                width: 120px;
                 margin-top: 30px;
                 margin-right: 10px;
                 background: #735bc1;
@@ -300,6 +298,8 @@
                     <input id="artist" type="text" class="form-control op1-1-1" aria-label="Default"
                            aria-describedby="inputGroup-sizing-default"
                            placeholder="artist를 입력하세요.">
+                </div>
+                <div class="op1 input-group mb-3">
                     <div class="input-group-prepend op1-2">
                         <span class="input-group-text"
                               style="background: #735bc1; color: white">제목</span>
@@ -308,6 +308,7 @@
                            aria-describedby="inputGroup-sizing-default"
                            placeholder="제목을 작성해주세요.">
                 </div>
+
             </div>
 
 
@@ -342,7 +343,7 @@
                 <div class="attach_box" style="color: white">
                     <input type="file" name="file" id="file_upload"/>
                     <br>
-                    <span>*파일이 첨부 되지 않을 경우, 랜덤 사진이 노출됩니다.*</span>
+                    <span>*파일이 첨부 되지 않을 경우, 기본 사진이 노출됩니다.*</span>
                 </div>
             </div>
 

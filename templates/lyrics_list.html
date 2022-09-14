@@ -5,6 +5,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+        <meta property="og:title" content="My Lyrics" />
+        <meta property="og:description" content="당신을 위한 가사들" />
+        <meta property="og:image" content="https://img.freepik.com/premium-vector/sheets-of-paper-from-a-notebook-or-notepad_186930-151.jpg?w=2000" />
+
+
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -79,7 +84,7 @@
                 justify-content: center;
             }
             .mytitle > h1 {
-                font-size: 5.5rem;
+                font-size: 5rem;
                 text-shadow: 4px 2px 2px #282a3f;
             }
             .mytitle > h3 {
@@ -251,7 +256,7 @@
                                                     <img src="../static/${img}" class="card-img-top" alt="">
 
                                                     <div class="card-body">
-                                                        <i class="fa-solid fa-heart" onclick="likeComment('${artist}')"> ${like}</i>
+                                                        <i class="fa-solid fa-heart" onclick="likeComment('${id}')"> ${like}</i>
                                                         <i class="fa-solid fa-trash-can" onclick="delete_list(this)"></i>
                                                         <input class="input_bpw" type="hidden" value="${pw}"></input>
                                                         <input class="input_bid" type="hidden" value="${id}"></input>
@@ -264,11 +269,11 @@
                 });
             }
 
-            function likeComment(artist) {
+            function likeComment(Id) {
             $.ajax({
                 type: 'POST',
                 url: '/api/like',
-                data: {artist_give: artist},
+                data: {id_give: Id},
                 success: function (response) {
                     alert(response['msg']);
                     window.location.reload()
@@ -307,7 +312,7 @@
     </header>
 <!--음악 검색-->
     <div class="mytitle">
-        <h1 style="font-weight: bolder">My Lyrics</h1>
+        <h1>My Lyrics</h1>
         <h3>당신을 위한 가사들</h3>
 <!--        <button onclick="open_box()">음악 찾기</button>-->
     </div>

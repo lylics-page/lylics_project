@@ -31,6 +31,11 @@ def lyrics_create():
 def lyrics_list():
     return render_template('lyrics_list.html')
 
+# 'main' 관련 코드
+@app.route("/main/get", methods=["GET"])
+def gasa_get():
+    gasa_list = list(db.project27.find({},{'_id':False}))
+    return jsonify({'gasa': gasa_list})
 
 # 'lyrics_list.html' 관련 코드
 
@@ -50,14 +55,14 @@ def delete_card():
 # 좋아요 수 늘리기
 @app.route('/api/like', methods=['POST'])
 def like_comment():
-    artist_receive = request.form['artist_give']
+    id_receive = request.form['id_give']
 
-    target_id = db.project27.find_one({'artist': artist_receive})
+    target_id = db.project27.find_one({'_id': ObjectId(id_receive)})
     current_like = target_id['like']
 
     new_like = current_like + 1
 
-    db.project27.update_one({'artist': artist_receive}, {'$set': {'like': new_like}})
+    db.project27.update_one({'_id': ObjectId(id_receive)}, {'$set': {'like': new_like}})
 
     return jsonify({'msg': '좋아요 완료!'})
 
